@@ -24,12 +24,12 @@ import org.apache.flink.util.DockerImageVersions;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.testcontainers.containers.BindMode;
 import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.containers.PulsarContainer;
 import org.testcontainers.containers.output.Slf4jLogConsumer;
 import org.testcontainers.containers.wait.strategy.HttpWaitStrategy;
 import org.testcontainers.utility.DockerImageName;
+import org.testcontainers.utility.MountableFile;
 
 import java.io.IOException;
 import java.time.Duration;
@@ -73,10 +73,9 @@ public class PulsarContainerRuntime implements PulsarRuntime {
     @Override
     public void startUp() {
         // Prepare Pulsar Container.
-        container.withClasspathResourceMapping(
-                "containers/txnStandalone.conf",
-                "/pulsar/conf/standalone.conf",
-                BindMode.READ_ONLY);
+        container.withCopyFileToContainer(
+                MountableFile.forClasspathResource("containers/txnStandalone.conf"),
+                "/pulsar/conf/standalone.conf");
         container.addExposedPort(2181);
         container.waitingFor(
                 new HttpWaitStrategy()
