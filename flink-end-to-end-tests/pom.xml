@@ -128,7 +128,8 @@ under the License.
 								</goals>
 								<configuration>
 									<includes>
-										<include>**/*.*</include>
+										<include>**/PulsarSourceOrderedE2ECase.java</include>
+										<include>**/PulsarSourceUnorderedE2ECase.java</include>
 									</includes>
 									<excludedGroups>${excludeE2E}</excludedGroups>
 									<!-- E2E tests must not access flink-dist concurrently. -->
