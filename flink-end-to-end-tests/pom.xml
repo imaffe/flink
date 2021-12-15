@@ -202,12 +202,6 @@ under the License.
 								</excludes>
 							</filter>
 						</filters>
-						<transformers>
-							<transformer implementation="org.apache.maven.plugins.shade.resource.IncludeResourceTransformer">
-								<resource>containers/txnStandalone.conf</resource>
-								<file>containers/txnStandalone.conf</file>
-							</transformer>
-						</transformers>
 					</configuration>
 				</plugin>
 			</plugins>
