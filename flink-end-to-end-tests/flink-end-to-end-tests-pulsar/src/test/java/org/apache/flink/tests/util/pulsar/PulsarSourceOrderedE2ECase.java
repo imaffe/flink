@@ -36,7 +36,6 @@ import static org.apache.flink.connector.pulsar.testutils.runtime.PulsarRuntime.
  * Pulsar E2E test based on connector testing framework. It's used for Failover & Exclusive
  * subscription.
  */
-@Disabled("FLINK-25210")
 public class PulsarSourceOrderedE2ECase extends SourceTestSuiteBase<String> {
 
     // Defines TestEnvironment.
